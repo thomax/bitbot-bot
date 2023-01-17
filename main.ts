@@ -2,18 +2,15 @@ radio.onReceivedString(function (receivedString) {
     command = receivedString
 })
 let command = ""
-radio.setGroup(55)
+radio.setGroup(100)
 basic.forever(function () {
-    if (command == "right") {
-        bitbot.rotate(BBRobotDirection.Right, 60)
-    }
-    if (command == "left") {
-        bitbot.rotate(BBRobotDirection.Left, 60)
-    }
     if (command == "forward") {
         bitbot.go(BBDirection.Forward, 60)
-    }
-    if (command == "stop") {
+    } else if (command == "right") {
+        bitbot.rotate(BBRobotDirection.Right, 60)
+    } else if (command == "left") {
+        bitbot.rotate(BBRobotDirection.Left, 60)
+    } else {
         bitbot.stop(BBStopMode.Coast)
     }
 })
